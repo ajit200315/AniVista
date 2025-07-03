@@ -1,25 +1,20 @@
-import './App.css'
-import useBringAnimeInfo from './Hooks/BringAnimeInfo'
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import HomePage from "./Components/HomePage";
+import AnimePage from "./Components/AnimePage";
 
 function App() {
-
-  let AnimeInfo = useBringAnimeInfo()
-  console.log(AnimeInfo);
   return (
     <>
-    <h2>Top Anime</h2>
-    <ul className='flex flex-wrap'>
-      {
-        AnimeInfo.map( anime =>(
-          <li className='m-10' key={anime.mal_id}>{anime.rank}) {anime.title_english} ({anime.score}) ::- {(anime.genres[0].name)}
-          { <img src={anime.images.jpg.image_url} alt="" /> }
-          </li>
-        )
-        )
-      }
-    </ul>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element = {<HomePage/>} />
+          <Route path="/Anime/:id" element = {<AnimePage/>} /> 
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
