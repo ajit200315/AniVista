@@ -1,13 +1,17 @@
+import PQueue from "p-queue";
 import React, { useEffect, useState } from "react";
+
+let ApiQueue = new PQueue({interval:1000 , intervalCap:3});
 
 function useBringAnimeInfo(endpoint){
     let [fetchData , setFetchData] = useState([]);
-    let FetchingProcess = useEffect(
+    useEffect(
         ()=>{
+            ApiQueue.add(()=>
             fetch(`https://api.jikan.moe/v4/${endpoint}`)
-            .then((data)=>(data.json()))
-            .then((data) =>(setFetchData(data.data)))
-        },[]
+            .then((data)=>data.json())
+            ).then((Response)=> setFetchData(Response.data))
+        },[endpoint]
     )
     return fetchData ; 
  }
