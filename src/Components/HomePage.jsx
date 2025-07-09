@@ -5,11 +5,21 @@ import Search from './Search'
 function HomePage() {
   let UpComingAnime = useBringAnimeInfo("seasons/upcoming?limit=20")
   let TopAnime = useBringAnimeInfo("top/anime?limit=20")
-
+  console.log(UpComingAnime)
   return (
     <>
+    { TopAnime.length > 0 ? (
     <div className='bg-gray-800 p-5'>
-      <Search/>
+      <div className="flex justify-between items-center mb-6">
+            <Link to={`/`}>
+            <img
+              src="/Favicon.png"
+              alt="Logo"
+              className="w-25 h-25 object-fill shadow-md"
+            />
+            </Link>
+            <Search />
+          </div>
       <h2 className="text-3xl font-semibold text-gray-100 mb-4">Top Anime</h2>
       <ul className="flex flex-wrap justify-center gap-6 mb-12">
         {TopAnime.map(anime => (
@@ -23,7 +33,7 @@ function HomePage() {
               className="bg-gray-800 text-gray-100 p-4 flex flex-col items-center rounded-lg hover:bg-gray-700 transform hover:scale-105 transition-transform duration-200"
             >
               <span className="font-semibold text-center">
-                {anime.title_english}
+                {anime.title_english? anime.title_english : anime.title}
               </span>
               <img
                 className="w-40 h-auto mt-2 rounded-md"
@@ -48,7 +58,7 @@ function HomePage() {
               className="bg-gray-800 text-gray-100 p-4 flex flex-col items-center rounded-lg hover:bg-gray-700 transform hover:scale-105 transition-transform duration-200"
             >
               <span className="font-semibold text-center">
-                {anime.title_english} 
+                {anime.title_english? anime.title_english : anime.title} 
               </span>
               <img
                 className="w-40 h-auto mt-2 rounded-md"
@@ -59,7 +69,13 @@ function HomePage() {
           </Link>
         ))}
       </ul>
-      </div>
+      </div>):
+      (
+         <div className="flex items-center justify-center min-h-screen bg-gray-900">
+          <p className="text-gray-500 text-lg">Loading...</p>
+        </div>
+      )
+}
     </>
   )
 }
