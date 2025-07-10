@@ -1,6 +1,6 @@
 import PQueue from "p-queue";
 import React, { useEffect, useState } from "react";
-import { fetchWithRetry } from "../utils/fetchWithRetry";
+import { fetchWithRetry } from "../utils/FetchWithRetry";
 
 let ApiQueue = new PQueue({interval:1000 , intervalCap:3});
 

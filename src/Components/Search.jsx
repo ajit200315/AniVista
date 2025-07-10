@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const [debouncedQuery] = useDebounce(query, 500);
+  const [debouncedQuery] = useDebounce(query, 250);
   const Searchresult = useBringAnimeInfo(`anime?q=${debouncedQuery}`);
   const [results, setResults] = useState([]);
   const [hidden, setHidden] = useState(true);

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import useBringAnimeInfo from "../Hooks/BringAnimeInfo";
 import Search from "./Search";
+import Watchlist from "./Watchlist";
 
 function AnimePage() {
   const { id } = useParams();
@@ -48,6 +49,7 @@ function AnimePage() {
                     {genre.name}
                   </span>
                 ))}
+              <Watchlist/>
               </div>
             </div>
 
