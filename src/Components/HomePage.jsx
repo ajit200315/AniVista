@@ -19,6 +19,9 @@ function HomePage() {
 
   return (
     <>
+    <body className="bg-gray-800">
+      
+    </body>
       {TopAnime.length > 0 ? (
         <div className="bg-gray-800 p-5">
           <div className="flex justify-between items-center mb-6">
@@ -27,6 +30,7 @@ function HomePage() {
                 src="/Favicon.png"
                 alt="Logo"
                 className="w-25 h-25 object-fill shadow-md"
+                onClick={()=>(SetdisplayFilter(false))}
               />
             </Link>
 
@@ -35,7 +39,12 @@ function HomePage() {
               <Search />
             </div>
           </div>
-          <div className={displayFilter ? "" : "hidden"}>
+          
+           <h2 className= {`${displayFilter ? "text-3xl font-semibold text-gray-100 mb-4" : "hidden"}`}>
+            Filter Results
+          </h2>
+          <div className={`${displayFilter ? "flex flex-wrap justify-center gap-6 mb-12" : "hidden"}`}>
+
             {context?.BringAnime.map((anime) => (
               <Link
                 to={`Anime/${anime.mal_id}`}
@@ -58,11 +67,11 @@ function HomePage() {
               </Link>
             ))}
           </div>
-          <h2 className="text-3xl font-semibold text-gray-100 mb-4">
+          <h2 className={`!displayFilter ? text-3xl font-semibold text-gray-100 mb-4: hidden`}>
             Top Anime
           </h2>
           <ul className="flex flex-wrap justify-center gap-6 mb-12">
-            {TopAnime.map((anime) => (
+            {!displayFilter&&TopAnime.map((anime) => (
               <Link
                 to={`Anime/${anime.mal_id}`}
                 key={anime.mal_id}
@@ -85,11 +94,11 @@ function HomePage() {
             ))}
           </ul>
 
-          <h2 className="text-3xl font-semibold text-gray-100 mb-4">
+          <h2 className={`!displayFilter ? text-3xl font-semibold text-gray-100 mb-4: hidden`}>
             UpComing Anime
           </h2>
           <ul className="flex flex-wrap justify-center gap-6">
-            {UpComingAnime.map((anime) => (
+            {!displayFilter&&UpComingAnime.map((anime) => (
               <Link
                 to={`Anime/${anime.mal_id}`}
                 key={anime.mal_id}
