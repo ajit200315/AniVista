@@ -11,7 +11,7 @@ function AnimePage() {
   let SingleAnime = useBringAnimeInfo(`anime/${id}`);
   let AllAnimeRecommendation = useBringAnimeInfo(`anime/${id}/recommendations`);
   let AnimeRecommendation = AllAnimeRecommendation.slice(0,10)
-  console.log(AllAnimeRecommendation);
+  
 
   return (
      <>
