@@ -9,7 +9,7 @@ function Filter() {
   const [selectedGenreString, setSelectedGenreString] = useState("");
   const BringAnime = useBringAnimeInfo(`anime?genres=${selectedGenreString}`);
   const { SetContext } = useContext(UserContext);
-
+  
   useEffect(() => {
     SetContext({
       BringAnime,
@@ -29,14 +29,11 @@ function Filter() {
     setSelectedGenre(selectedGenre.filter((id) => id !== val));
   }
 }
+console.log(BringAnime)
 
   return (
     <>
-    
-    {
-    selectedGenre.length >= 0 && !BringAnime.length == 0 ?
-    (
-        <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left">
           <div className="mb-2">
             <button
               onClick={() => SetDrop(!drop)}
@@ -69,12 +66,16 @@ function Filter() {
             </div>
           )}
         </div>
+    {/* {
+    BringAnime.length != 0 || selectedGenre.length == 0   ?
+    (
+         
     ):(
        <h2 className={`${selectedGenre.length > 0}? absolute inset-0 flex items-center justify-center text-white text-2xl font-semibold z-50 bg-gray-900 bg-opacity-90 : hidden`}>
   No such Anime Available
 </h2>
     )
-    }
+    } */}
     </>
   );
 }

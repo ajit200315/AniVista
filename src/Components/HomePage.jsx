@@ -15,13 +15,13 @@ function HomePage() {
     SetdisplayFilter(context?.isFiltered);
   }, [context?.isFiltered]);
 
-  console.log(context?.BringAnime);
 
   return (
     <>
-    <body className="bg-gray-800">
-      
-    </body>
+    <div className="bg-gray-800 min-h-screen">
+   {
+    
+   }
       {TopAnime.length > 0 ? (
         <div className="bg-gray-800 p-5">
           <div className="flex justify-between items-center mb-6">
@@ -30,7 +30,7 @@ function HomePage() {
                 src="/Favicon.png"
                 alt="Logo"
                 className="w-25 h-25 object-fill shadow-md"
-                onClick={()=>(SetdisplayFilter(false))}
+                onClick={()=>(window.location.reload())}
               />
             </Link>
 
@@ -126,6 +126,7 @@ function HomePage() {
           <p className="text-gray-500 text-lg">Loading...</p>
         </div>
       )}
+    </div>
     </>
   );
 }
