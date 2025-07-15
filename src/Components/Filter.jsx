@@ -36,9 +36,9 @@ function Filter() {
         <div className="mb-2">
           <button
             onClick={() => SetDrop(!drop)}
-            className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition"
+            className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-2"
           >
-            Filter by Genre
+           <img src='/filter.png' alt="" className="h-auto w-20"/>
           </button>
         </div>
 

@@ -7,14 +7,28 @@ import { useContext, useEffect, useState } from "react";
 import HomePageHero from "./HomePageHero";
 
 function HomePage() {
-  let UpComingAnime = useBringAnimeInfo("seasons/upcoming?limit=20");
-  let TopAnime = useBringAnimeInfo("top/anime?limit=20");
+  let UpComingAnimeDuplicate = useBringAnimeInfo("seasons/upcoming?limit=25");
+  let UpComingAnime = deDupe(UpComingAnimeDuplicate);
+  let TopAnimeDuplicate = useBringAnimeInfo("top/anime?limit=25");
+  let TopAnime = deDupe(TopAnimeDuplicate);
   let { context } = useContext(UserContext);
   let [displayFilter, SetdisplayFilter] = useState(false);
 
   useEffect(() => {
     SetdisplayFilter(context?.isFiltered);
   }, [context?.isFiltered]);
+
+  function deDupe(DataArray){
+      let filtered = new Set();
+      return DataArray.filter((anime)=>
+      {
+          if(filtered.has(anime.mal_id)) return false ; 
+          filtered.add(anime.mal_id);
+          return true ;
+      }
+      )
+  }
+  
 
   return (
     <>
@@ -32,6 +46,11 @@ function HomePage() {
               </Link>
 
               <div className="flex space-x-4 items-center">
+                <Link to={'/WatchList'}>
+                <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
+                  <img src="public\Bookmark.png" alt="" className="h-auto w-16"/>
+                </button>
+                </Link>
                 <Filter />
                 <Search />
               </div>
@@ -58,7 +77,9 @@ function HomePage() {
               ))}
             </div>
 
+            <div className= {!displayFilter? ' mb-4' : 'hidden'}>
             <HomePageHero />
+            </div>
 
             <h2 className={!displayFilter ? 'text-3xl font-semibold text-green-300 mb-4' : 'hidden'}>
               Top Anime
