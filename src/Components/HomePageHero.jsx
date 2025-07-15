@@ -107,9 +107,9 @@ function ClickedNext(){
       </div>
       <div className="flex justify-center mb-10 p-10">
   
-            <img src='public\next.png' alt="" className="size-10 rotate-180" onClick={ClickedPrev}/>
+            <img src='/next.png' alt="" className="size-10 rotate-180" onClick={ClickedPrev}/>
         
-            <img src='public\next.png' alt="" className="size-10 ml-5" onClick={ClickedNext}/>
+            <img src='/next.png' alt="" className="size-10 ml-5" onClick={ClickedNext}/>
         </div>
     </div>
   );
