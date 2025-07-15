@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import useBringAnimeInfo from "../Hooks/BringAnimeInfo";
 import Search from "./Search";
 import Watchlist from "./Watchlist";
+import Filter from "./Filter";
 
 function AnimePage() {
   const { id } = useParams();
@@ -16,23 +17,34 @@ function AnimePage() {
     <>
       {SingleAnime.images ? (
         <div className="bg-black text-green-300 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex justify-between items-center mb-8">
-            <Link to={`/`}>
-              <img
-                src="/Favicon.png"
-                alt="Logo"
-                className="w-20 h-20 object-contain"
-              />
-            </Link>
-            <div className="w-72">
-              <Search />
-            </div>
+          <div className="flex">
+
+          <div className="flex justify-between items-center mb-6">
+              <Link to={`/`}>
+                <img
+                  src="/Favicon.png"
+                  alt="Logo"
+                  className="w-25 h-25 object-fill shadow-md"
+                  onClick={() => window.location.reload()}
+                />
+              </Link>
+              </div>
+
+              <div className="flex space-x-4 w-full justify-end">
+                <Link to={'/WatchList'}>
+                <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
+                  <img src="/Bookmark.png" alt="" className="h-auto w-10"/>
+                </button>
+                </Link>
+                <Filter />
+                <Search />
+              </div>
           </div>
 
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="space-y-4">
               <img
-                src={SingleAnime.images.jpg.image_url}
+                src={SingleAnime.images.webp.image_url}
                 alt={SingleAnime.title}
                 className="w-full rounded-xl shadow-lg"
               />
