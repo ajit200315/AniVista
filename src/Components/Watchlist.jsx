@@ -6,9 +6,19 @@ function Watchlist() {
     const { id } = useParams();
 
     function addToWatchlist(){
-        setWatchlist([...watchList , id ])
+       let currentList = JSON.parse(localStorage.getItem('numbersList'));
+       if(Array.isArray(currentList))
+       {
+         setWatchlist([...currentList, id])
+         localStorage.setItem('numbersList', JSON.stringify(watchList));
+       }else
+       {
+        setWatchlist([id])
+        localStorage.setItem('numbersList', JSON.stringify(watchList));
+       }
     }
-    
+
+    console.log(watchList)
   return (
     <>
     <button onClick={addToWatchlist} className='bg-amber-50'>Add to Watchlist</button>

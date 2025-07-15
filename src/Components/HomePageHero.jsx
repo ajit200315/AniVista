@@ -3,8 +3,17 @@ import useBringAnimeInfo from "../Hooks/BringAnimeInfo";
 import { Link } from "react-router-dom";
 
 function HomePageHero() {
+  let [loading , SetLoading] = useState(true);
   let topAiringAnime = useBringAnimeInfo("top/anime?filter=airing");
   let [ImgIndex, SetImgIndex] = useState(0);
+
+  useEffect(
+    ()=>{
+      if (topAiringAnime.length > 0){
+        SetLoading(false)
+      }
+    },[topAiringAnime]
+  )
 
  useEffect(() => {
   const interval = setInterval(() => {
@@ -52,7 +61,9 @@ function ClickedNext(){
 
 
   return (
-    <div className="w-full px-4 py-10 bg-black text-green-300">
+    <>
+    {!loading? 
+    (<div className="w-full px-4 py-10 bg-black text-green-300">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center bg-black rounded-lg shadow-lg p-6">
         {/* Poster Image */}
         <div className="relative w-full h-full">
@@ -111,7 +122,11 @@ function ClickedNext(){
         
             <img src='/next.png' alt="" className="size-10 ml-5" onClick={ClickedNext}/>
         </div>
-    </div>
+    </div>):(<div className="flex items-center justify-center h-screen bg-black">
+          <p className="text-green-200 text-lg">Loading...</p>
+        </div>)
+  }
+    </>
   );
 }
 
