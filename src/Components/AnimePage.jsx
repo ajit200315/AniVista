@@ -10,14 +10,12 @@ function AnimePage() {
   let CharacterInfo = AllCharacterInfo.slice(0, 10);
   let SingleAnime = useBringAnimeInfo(`anime/${id}`);
   let AllAnimeRecommendation = useBringAnimeInfo(`anime/${id}/recommendations`);
-  let AnimeRecommendation = AllAnimeRecommendation.slice(0,10)
-  
+  let AnimeRecommendation = AllAnimeRecommendation.slice(0, 10);
 
   return (
-     <>
+    <>
       {SingleAnime.images ? (
-        <div className="bg-gray-900 text-gray-100 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-          {/* Header */}
+        <div className="bg-black text-green-300 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto flex justify-between items-center mb-8">
             <Link to={`/`}>
               <img
@@ -31,9 +29,7 @@ function AnimePage() {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Left: Image & Genres */}
             <div className="space-y-4">
               <img
                 src={SingleAnime.images.jpg.image_url}
@@ -44,16 +40,15 @@ function AnimePage() {
                 {SingleAnime.genres.map((genre) => (
                   <span
                     key={genre.name}
-                    className="bg-indigo-700 text-indigo-200 px-3 py-1 rounded-full text-xs font-medium"
+                    className="bg-purple-600 text-green-300 px-3 py-1 rounded-full text-xs font-medium"
                   >
                     {genre.name}
                   </span>
                 ))}
-              <Watchlist/>
+                <Watchlist />
               </div>
             </div>
 
-            {/* Right: Info & Synopsis */}
             <div className="lg:col-span-2 space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
@@ -63,24 +58,24 @@ function AnimePage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition"
+                    className="bg-black p-6 rounded-xl shadow-md hover:shadow-lg transition"
                   >
-                    <p className="text-sm font-medium text-gray-400">{item.label}</p>
-                    <p className="mt-2 text-2xl font-semibold">{item.value? item.value: 'N/A'}</p>
-                    {item.sub && <p className="mt-1 text-sm text-gray-500">{item.sub}</p>}
+                    <p className="text-sm font-medium text-purple-400">{item.label}</p>
+                    <p className="mt-2 text-2xl font-semibold">{item.value || 'N/A'}</p>
+                    {item.sub && <p className="mt-1 text-sm text-green-200">{item.sub}</p>}
                   </div>
                 ))}
               </div>
 
-              <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+              <div className="bg-black p-6 rounded-xl shadow-lg">
                 <h2 className="text-xl font-semibold mb-3">Synopsis</h2>
-                <p className="text-sm leading-relaxed text-gray-300">
+                <p className="text-sm leading-relaxed text-purple-300">
                   {SingleAnime.synopsis}
                 </p>
               </div>
 
               {SingleAnime.trailer?.embed_url && (
-                <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div className="bg-black p-6 rounded-xl shadow-lg">
                   <h2 className="text-xl font-semibold mb-3">Trailer</h2>
                   <div className="aspect-video rounded overflow-hidden">
                     <iframe
@@ -95,14 +90,13 @@ function AnimePage() {
             </div>
           </div>
 
-          {/* Characters */}
           <div className="max-w-7xl mx-auto mt-16">
             <h2 className="text-2xl font-semibold mb-6">Characters</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
               {CharacterInfo.map(({ character }, i) => (
                 <div
                   key={i}
-                  className="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
+                  className="bg-black rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
                 >
                   <img
                     src={character.images.jpg.image_url}
@@ -110,14 +104,13 @@ function AnimePage() {
                     className="w-full h-100 object-cover"
                   />
                   <div className="p-4">
-                    <p className="text-sm font-medium text-gray-200">{character.name}</p>
+                    <p className="text-sm font-medium text-purple-300">{character.name}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Recommendations */}
           <div className="max-w-7xl mx-auto mt-16">
             <h2 className="text-3xl font-semibold mb-6">Similar Anime</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -126,22 +119,22 @@ function AnimePage() {
                   key={entry.mal_id}
                   to={`/Anime/${entry.mal_id}`}
                   onClick={() => window.scrollTo({ top: 0 })}
-                  className="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transform hover:-translate-y-1 transition p-2 text-center"
+                  className="bg-black rounded-xl overflow-hidden shadow-md hover:shadow-lg transform hover:-translate-y-1 transition p-2 text-center"
                 >
                   <img
                     src={entry.images.jpg.image_url}
                     alt={entry.title}
                     className="w-full h-40 object-cover"
                   />
-                  <p className="mt-2 text-sm font-medium text-gray-200 truncate">{entry.title}</p>
+                  <p className="mt-2 text-sm font-medium text-purple-300 truncate">{entry.title}</p>
                 </Link>
               ))}
             </div>
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center min-h-screen bg-gray-900">
-          <p className="text-gray-500 text-lg">Loading...</p>
+        <div className="flex items-center justify-center min-h-screen bg-black">
+          <p className="text-green-200 text-lg">Loading...</p>
         </div>
       )}
     </>

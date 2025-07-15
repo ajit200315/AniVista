@@ -10,7 +10,6 @@ function Search() {
   const [results, setResults] = useState([]);
   const [hidden, setHidden] = useState(true);
 
-  // Update results when the debounced query or incoming data change
   useEffect(() => {
     if (debouncedQuery.length > 0) {
       setResults(Searchresult);
@@ -27,21 +26,16 @@ function Search() {
         type="text"
         placeholder="Enter Anime Here"
         value={query}
-        onChange={e => setQuery(e.target.value)}
-        className="w-full mb-5 bg-gray-800 text-gray-100 placeholder-gray-500 border border-gray-700 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        onChange={(e) => setQuery(e.target.value)}
+        className="w-full mb-5 bg-black text-green-300 placeholder-purple-300 border border-green-700 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-700"
       />
 
-      {/* Only render the dropdown when it should be visible */}
       {!hidden && (
-        <div className="absolute left-0 right-0 mt-1 bg-gray-900 border border-gray-700 rounded-md overflow-y-auto max-h-64 z-10">
-          {results.map(anime => (
-            <Link
-              to={`Anime/${anime.mal_id}`}
-              key={anime.mal_id}
-              className="block"
-            >
-              <div className="flex items-center gap-4 p-3 hover:bg-gray-800 transition-colors duration-200">
-                <span className="text-gray-100 font-medium">
+        <div className="absolute left-0 right-0 mt-1 bg-black border border-green-700 rounded-md overflow-y-auto max-h-64 z-10">
+          {results.map((anime) => (
+            <Link to={`Anime/${anime.mal_id}`} key={anime.mal_id} className="block">
+              <div className="flex items-center gap-4 p-3 hover:bg-purple-900 transition-colors duration-200">
+                <span className="text-green-300 font-medium">
                   {anime.title_english ?? anime.title} ({anime.score ?? "N/A"})
                 </span>
                 <img
