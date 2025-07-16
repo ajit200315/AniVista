@@ -25,7 +25,7 @@ function AnimePage() {
                   src="/Favicon.png"
                   alt="Logo"
                   className="w-25 h-25 object-fill shadow-md"
-                  onClick={() => window.location.reload()}
+    
                 />
               </Link>
               </div>
@@ -33,10 +33,10 @@ function AnimePage() {
               <div className="flex space-x-4 w-full justify-end">
                 <Link to={'/WatchList'}>
                 <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
-                  <img src="/Bookmark.png" alt="" className="h-auto w-10"/>
+                  <img src="/Bookmark.png" alt="" className="h-auto w-7"/>
                 </button>
                 </Link>
-                <Filter />
+               
                 <Search />
               </div>
           </div>

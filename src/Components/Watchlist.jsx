@@ -16,7 +16,7 @@ function Watchlist() {
   function addToWatchlist() {
     const currentList = JSON.parse(localStorage.getItem("numbersList")) || [];
 
-    if (!currentList.includes(id)) {
+    if (!currentList.includes(animeInfo)) {
       const updatedList = [...currentList, animeInfo];
       localStorage.setItem("numbersList", JSON.stringify(updatedList));
       setWatchlist(updatedList);

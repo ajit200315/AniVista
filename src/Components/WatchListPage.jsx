@@ -8,8 +8,19 @@ function WatchListPage() {
 
   useEffect(() => {
     const storedList = JSON.parse(localStorage.getItem("numbersList")) || [];
-    setAnimeList(storedList);
+    setAnimeList(deDupe(storedList));
   }, []);
+
+  function deDupe(DataArray){
+      let filtered = new Set();
+      return DataArray.filter((anime)=>
+      {
+          if(filtered.has(anime.mal_id)) return false ; 
+          filtered.add(anime.mal_id);
+          return true ;
+      }
+      )
+  }
 
   function removeFromWatchlist(mal_id) {
     const updatedList = animeList.filter((item) => item.mal_id !== mal_id);
