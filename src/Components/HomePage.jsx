@@ -48,7 +48,7 @@ function HomePage() {
               <div className="flex space-x-4 items-center">
                 <Link to={'/WatchList'}>
                 <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
-                  <img src="public\Bookmark.png" alt="" className="h-auto w-16"/>
+                  <img src="\Bookmark.png" alt="" className="h-auto w-16"/>
                 </button>
                 </Link>
                 <Filter />
