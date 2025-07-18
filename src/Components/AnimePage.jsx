@@ -70,16 +70,16 @@ function AnimePage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="bg-black p-6 rounded-xl shadow-md hover:shadow-lg transition"
+                    className="bg-green-900 p-6 rounded-xl shadow-md hover:bg-green-600 transition-all"
                   >
-                    <p className="text-sm font-medium text-purple-400">{item.label}</p>
+                    <p className="text-sm font-medium text-purple-500">{item.label}</p>
                     <p className="mt-2 text-2xl font-semibold">{item.value || 'N/A'}</p>
                     {item.sub && <p className="mt-1 text-sm text-green-200">{item.sub}</p>}
                   </div>
                 ))}
               </div>
 
-              <div className="bg-black p-6 rounded-xl shadow-lg">
+              <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
                 <h2 className="text-xl font-semibold mb-3">Synopsis</h2>
                 <p className="text-sm leading-relaxed text-purple-300">
                   {SingleAnime.synopsis}
@@ -108,7 +108,7 @@ function AnimePage() {
               {CharacterInfo.map(({ character }, i) => (
                 <div
                   key={i}
-                  className="bg-black rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
+                  className="bg-black rounded-xl overflow-hidden shadow-md hover:-translate-y-1 transition"
                 >
                   <img
                     src={character.images.jpg.image_url}

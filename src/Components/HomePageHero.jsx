@@ -122,7 +122,7 @@ function ClickedNext(){
         
             <img src='/next.png' alt="" className="size-10 ml-5" onClick={ClickedNext}/>
         </div>
-    </div>):(<div className="flex items-center justify-center h-screen bg-black">
+    </div>):(<div className="fixed inset-0 z-50 bg-opacity-50 flex items-center justify-center bg-black">
           <p className="text-green-200 text-lg">Loading...</p>
         </div>)
   }
