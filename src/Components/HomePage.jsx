@@ -18,17 +18,14 @@ function HomePage() {
     SetdisplayFilter(context?.isFiltered);
   }, [context?.isFiltered]);
 
-  function deDupe(DataArray){
-      let filtered = new Set();
-      return DataArray.filter((anime)=>
-      {
-          if(filtered.has(anime.mal_id)) return false ; 
-          filtered.add(anime.mal_id);
-          return true ;
-      }
-      )
+  function deDupe(DataArray) {
+    let filtered = new Set();
+    return DataArray.filter((anime) => {
+      if (filtered.has(anime.mal_id)) return false;
+      filtered.add(anime.mal_id);
+      return true;
+    });
   }
-  
 
   return (
     <>
@@ -46,25 +43,41 @@ function HomePage() {
               </Link>
 
               <div className="flex space-x-4 items-center">
-                <Link to={'/WatchList'}>
-                <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
-                  <img src="\Bookmark.png" alt="" className="h-auto w-16"/>
-                </button>
+                <Link to={"/WatchList"}>
+                  <button className="bg-green-700 hover:bg-green-800 text-black px-4 py-2 rounded-md shadow-md transition mb-4">
+                    <img src="\Bookmark.png" alt="" className="h-auto w-16" />
+                  </button>
                 </Link>
                 <Filter />
                 <Search />
               </div>
             </div>
 
-            <h2 className={displayFilter ? "text-3xl font-semibold text-green-300 mb-4" : "hidden"}>
+            <h2
+              className={
+                displayFilter
+                  ? "text-3xl font-semibold text-green-300 mb-4"
+                  : "hidden"
+              }
+            >
               Filter Results
             </h2>
 
-            <div className={displayFilter ? "flex flex-wrap justify-center gap-6 mb-12" : "hidden"}>
+            <div
+              className={
+                displayFilter
+                  ? "flex flex-wrap justify-center gap-6 mb-12"
+                  : "hidden"
+              }
+            >
               {context?.BringAnime.map((anime) => (
-                <Link to={`Anime/${anime.mal_id}`} key={anime.mal_id} className="block">
-                  <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200">
-                    <span className="font-semibold text-center">
+                <Link
+                  to={`Anime/${anime.mal_id}`}
+                  key={anime.mal_id}
+                  className="block"
+                >
+                  <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200 w-40">
+                    <span className="font-semibold text-center break-words w-40 text-sm">
                       {anime.title_english ? anime.title_english : anime.title}
                     </span>
                     <img
@@ -77,48 +90,70 @@ function HomePage() {
               ))}
             </div>
 
-            <div className= {!displayFilter? ' mb-4' : 'hidden'}>
-            <HomePageHero />
+            <div className={!displayFilter ? " mb-4" : "hidden"}>
+              <HomePageHero />
             </div>
 
-            <h2 className={!displayFilter ? 'text-3xl font-semibold text-green-300 mb-4' : 'hidden'}>
+            <h2
+              className={
+                !displayFilter
+                  ? "text-3xl font-semibold text-green-300 mb-4"
+                  : "hidden"
+              }
+            >
               Top Anime
             </h2>
             <ul className="flex flex-wrap justify-center gap-6 mb-12">
-              {!displayFilter && TopAnime.map((anime) => (
-                <Link to={`Anime/${anime.mal_id}`} key={anime.mal_id} className="block">
-                  <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200">
-                    <span className="font-semibold text-center">
-                      {anime.title_english ? anime.title_english : anime.title}
-                    </span>
-                    <img
-                      className="w-40 h-auto mt-2 rounded-md"
-                      src={anime.images.jpg.image_url}
-                      alt=""
-                    />
-                  </li>
-                </Link>
-              ))}
+              {!displayFilter &&
+                TopAnime.map((anime) => (
+                  <Link
+                    to={`Anime/${anime.mal_id}`}
+                    key={anime.mal_id}
+                    className="block"
+                  >
+                   <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200 w-52">
+  <span className="font-semibold text-center break-words w-48 text-sm">
+    {anime.title_english ? anime.title_english : anime.title}
+  </span>
+  <img
+    className="w-48 h-auto mt-2 rounded-md"
+    src={anime.images.jpg.image_url}
+    alt=""
+  />
+</li>
+                  </Link>
+                ))}
             </ul>
 
-            <h2 className={!displayFilter ? 'text-3xl font-semibold text-green-300 mb-4' : 'hidden'}>
+            <h2
+              className={
+                !displayFilter
+                  ? "text-3xl font-semibold text-green-300 mb-4"
+                  : "hidden"
+              }
+            >
               UpComing Anime
             </h2>
             <ul className="flex flex-wrap justify-center gap-6">
-              {!displayFilter && UpComingAnime.map((anime) => (
-                <Link to={`Anime/${anime.mal_id}`} key={anime.mal_id} className="block">
-                  <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200">
-                    <span className="font-semibold text-center">
-                      {anime.title_english ? anime.title_english : anime.title}
-                    </span>
-                    <img
-                      className="w-40 h-auto mt-2 rounded-md"
-                      src={anime.images.jpg.image_url}
-                      alt=""
-                    />
-                  </li>
-                </Link>
-              ))}
+              {!displayFilter &&
+                UpComingAnime.map((anime) => (
+                  <Link
+                    to={`Anime/${anime.mal_id}`}
+                    key={anime.mal_id}
+                    className="block"
+                  >
+                   <li className="bg-black text-green-300 p-4 flex flex-col items-center rounded-lg hover:bg-green-800 transform hover:scale-105 transition-transform duration-200 w-52">
+  <span className="font-semibold text-center break-words w-48 text-sm">
+    {anime.title_english ? anime.title_english : anime.title}
+  </span>
+  <img
+    className="w-48 h-auto mt-2 rounded-md"
+    src={anime.images.jpg.image_url}
+    alt=""
+  />
+</li>
+                  </Link>
+                ))}
             </ul>
           </div>
         ) : (
