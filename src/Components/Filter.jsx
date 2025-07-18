@@ -32,7 +32,7 @@ function Filter() {
 
   return (
     <>
-      <div className="relative inline-block text-left">
+      <div className="relative  text-left hidden sm:block">
         <div className="mb-2">
           <button
             onClick={() => SetDrop(!drop)}

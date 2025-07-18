@@ -56,7 +56,7 @@ function HomePageHero() {
   return (
     <>
       {!loading ? (
-        <div className="w-full px-4 py-12 bg-gradient-to-b from-black via-zinc-900 to-black text-green-300">
+        <div className="w-full px-4 py-12 bg-gradient-to-b from-black via-zinc-900 to-black text-green-300 ">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center rounded-lg shadow-xl p-6">
             
             {/* Poster Image with fade-in animation */}
